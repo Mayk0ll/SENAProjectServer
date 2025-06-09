@@ -1,7 +1,6 @@
-import { POLICY_PUBLIC } from "../constants/constants.js";
+import { POLICY_OWNER, POLICY_PUBLIC, POLICY_USER } from "../constants/constants.js";
 import { signin, signout, signupOwner } from "../controllers/user.controller.js";
 import CustomRouter from "./custom.routes.js";
-
 
 class Routes extends CustomRouter {
 
@@ -13,7 +12,7 @@ class Routes extends CustomRouter {
     routes(){
         this.create("/signin", [POLICY_PUBLIC], signin);
         this.create("/signup", [POLICY_PUBLIC], signupOwner);
-        this.destroy("/signout", [POLICY_PUBLIC], signout);
+        this.destroy("/signout", [POLICY_USER, POLICY_OWNER], signout);
     }
 }
 

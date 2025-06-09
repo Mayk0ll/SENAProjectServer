@@ -1,4 +1,5 @@
 import { DataTypes } from 'sequelize';
+import { ROLE_ADMIN, ROLE_OWNER, ROLE_USER } from '../../../constants/constants.js';
 
 const defineUserModel = (sequelize) => sequelize.define('User', {
     id: {
@@ -50,6 +51,11 @@ const defineUserModel = (sequelize) => sequelize.define('User', {
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    role: {
+        type: DataTypes.STRING,
+        enum: [ROLE_USER, ROLE_OWNER, ROLE_ADMIN],
+        defaultValue: ROLE_OWNER,
     },
     isActive: {
         type: DataTypes.BOOLEAN,

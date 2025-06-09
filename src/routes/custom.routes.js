@@ -7,7 +7,7 @@ class CustomRouter{
 
     constructor(){
         this.router = Router();
-        this.use(setupResponses);
+        this.router.use(setupResponses);
     }
 
     getRoutes = () => {

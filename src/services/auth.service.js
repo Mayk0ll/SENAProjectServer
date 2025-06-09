@@ -25,10 +25,16 @@ const signinService = async (email, password) => {
 
 const signupOwnerService = async (newUser) => {
 
-    const { companyId, documentType, documentNumber, name, lastName, address, city, phone, email, password, isActive } = newUser;
+    const { companyId, documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 } = newUser;
 
-    if (!name || !lastName || !email || !password) {
+    if (!name || !lastName || !email || !password || !password2) {
         const error = new Error('Una de los campos requeridos no fue enviado');
+        error.statusCode = 400;
+        throw error;
+    }
+
+    if (password !== password2) {
+        const error = new Error('Las contraseñas no coinciden');
         error.statusCode = 400;
         throw error;
     }
@@ -52,7 +58,6 @@ const signupOwnerService = async (newUser) => {
         phone,
         email,
         password: createHash(password),
-        isActive
     });
     const token = createToken(user);
     return {user, token};

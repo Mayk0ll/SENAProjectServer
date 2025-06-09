@@ -23,9 +23,8 @@ switch(persistence){
         break;
 }
 
-const { userManager, roleManager } = dao;
-
-export {
-    userManager,
-    roleManager
-};
+export const { 
+    userManager, 
+    roleManager, 
+    companyManager 
+} = dao;
