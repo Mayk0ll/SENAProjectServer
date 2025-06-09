@@ -2,8 +2,6 @@ import { Sequelize } from "sequelize";
 import envsVars from "./envs.js";
 import initModels from "../config/sequelize/models/initModels.js";
 
-//generar clase de coneccion con patron singleton
-
 class DBConnectSequelize {
 
     static instance = null;

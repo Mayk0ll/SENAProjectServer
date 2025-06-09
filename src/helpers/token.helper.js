@@ -7,7 +7,7 @@ const createToken = (payload) => {
         const token = jwt.sign({
             id,
             role
-        }, envsVars.jwtSecret, { expiresIn: "24h" });
+        }, envsVars.jwtSecret, { expiresIn: "12h" });
         return token;
     } catch (error) {
         error.statusCode = 401;
@@ -20,6 +20,7 @@ const verifyToken = (token) => {
         const verify = jwt.verify(token, envsVars.jwtSecret);
         return verify; 
     } catch (error) {
+        error.message = "Token no valido";
         error.statusCode = 401;
         throw error;
     }

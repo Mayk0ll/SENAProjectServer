@@ -14,7 +14,8 @@ class ManagerSequelize {
 const buildManagers = (models) => {
     const userManager = new ManagerSequelize(models.UserModel);
     const roleManager = new ManagerSequelize(models.RoleModel);
-    return { userManager, roleManager };
+    const companyManager = new ManagerSequelize(models.CompanyModel);
+    return { userManager, roleManager, companyManager };
 };
 
 export { buildManagers };

@@ -1,4 +1,5 @@
 import { signinService, signupOwnerService } from "../services/auth.service.js";
+import { createCompany } from "../services/company.service.js";
 
 const signin = async( req, res ) => {
 
@@ -8,6 +9,7 @@ const signin = async( req, res ) => {
     res.cookie("token", token, { 
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 12,
+        signed: true,
      });
 
     res.json200({ id: user.id ,name: user.name, lastName: user.lastName, email: user.email });
@@ -15,12 +17,16 @@ const signin = async( req, res ) => {
 
 const signupOwner = async( req, res ) => {
 
-    const { companyId, documentType, documentNumber, name, lastName, address, city, phone, email, password, isActive } = req.body;
-    const { user, token } = await signupOwnerService({ companyId, documentType, documentNumber, name, lastName, address, city, phone, email, password, isActive });
+    const { documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 } = req.body;
+
+    const company = await createCompany({ name, address, city, phone, email });
+
+    const { user, token } = await signupOwnerService({ companyId: company.id, documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 });
     
     res.cookie("token", token, { 
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 12,
+        signed: true,
      });
 
     res.json200({ id: user.id ,name: user.name, lastName: user.lastName, email: user.email });
