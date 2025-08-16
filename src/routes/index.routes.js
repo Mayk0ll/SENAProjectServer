@@ -1,6 +1,7 @@
 import authRouter from "./auth.routes.js";
 import CustomRouter from "./custom.routes.js";
 import userRoutes from "./user.routes.js";
+import inventoryRoutes from "./inventory.routes.js";
 
 
 class Routes extends CustomRouter {
@@ -12,6 +13,7 @@ class Routes extends CustomRouter {
     routes() {
         this.use("/auth", authRouter);
         this.use("/users", userRoutes);
+        this.use("/inventory", inventoryRoutes);
     }
 }
 

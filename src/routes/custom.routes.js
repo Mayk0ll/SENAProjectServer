@@ -18,7 +18,7 @@ class CustomRouter{
         try {
             await callback(req, res, next);
         } catch (error) {
-            //guardar el log de error
+            console.log(error)
             next(error);
         }
     });

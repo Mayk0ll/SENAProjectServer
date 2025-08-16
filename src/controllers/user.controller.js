@@ -1,9 +1,8 @@
 import { signinService, signupOwnerService } from "../services/auth.service.js";
-import { createCompany } from "../services/company.service.js";
 
 const signin = async( req, res ) => {
 
-    const { email, password } = req.body;    
+    const { email, password } = req.body;
     const { user, token } = await signinService(email, password);
     
     res.cookie("token", token, { 
@@ -19,9 +18,7 @@ const signupOwner = async( req, res ) => {
 
     const { documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 } = req.body;
 
-    const company = await createCompany({ name, address, city, phone, email });
-
-    const { user, token } = await signupOwnerService({ companyId: company.id, documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 });
+    const { user, token } = await signupOwnerService({ documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 });
     
     res.cookie("token", token, { 
         httpOnly: true,

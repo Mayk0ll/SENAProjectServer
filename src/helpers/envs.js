@@ -28,7 +28,7 @@ const envsVars = {
     env: config.NODE_ENV,
     port: config.PORT,
     persistence: config.PERSISTENCE,
-    corsOrigin: config.NODE_ENV === 'production' ? config.CORS_ORIGIN.split(';') : "*",
+    corsOrigin: config.NODE_ENV === 'production' ? config.CORS_ORIGIN.split(';') : "http://localhost:4200",
     cookieSecret: config.COOKIE_SECRET,
     jwtSecret: config.JWT_SECRET,
     db: {

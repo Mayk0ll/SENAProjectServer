@@ -8,10 +8,6 @@ const defineUserModel = (sequelize) => sequelize.define('User', {
         allowNull: false,
         unique: true,
     },
-    companyId: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    },
     documentType: {
         type: DataTypes.STRING,
         allowNull: true

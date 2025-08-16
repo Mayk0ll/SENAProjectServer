@@ -25,7 +25,7 @@ const signinService = async (email, password) => {
 
 const signupOwnerService = async (newUser) => {
 
-    const { companyId, documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 } = newUser;
+    const { documentType, documentNumber, name, lastName, address, city, phone, email, password, password2 } = newUser;
 
     if (!name || !lastName || !email || !password || !password2) {
         const error = new Error('Una de los campos requeridos no fue enviado');
@@ -48,7 +48,6 @@ const signupOwnerService = async (newUser) => {
 
     const user = await userManager.create({
         id: uuid(),
-        companyId,
         documentType,
         documentNumber,
         name,

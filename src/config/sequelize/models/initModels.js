@@ -1,16 +1,16 @@
-import defineCompanyModel from "./company.model.js";
+import defineInventoryModel from "./inventory.model.js";
 import defineRoleModel from "./role.model.js";
 import defineUserModel from "./user.model.js";
 
 const initModels = (sequelize) => {
-    const CompanyModel = defineCompanyModel(sequelize);
     const RoleModel = defineRoleModel(sequelize);
     const UserModel = defineUserModel(sequelize);
+    const InventoryModel = defineInventoryModel(sequelize);
 
     return {
-        CompanyModel,
         RoleModel,
         UserModel,
+        InventoryModel
     };
 };
 

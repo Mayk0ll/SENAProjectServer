@@ -25,6 +25,6 @@ switch(persistence){
 
 export const { 
     userManager, 
-    roleManager, 
-    companyManager 
+    roleManager,
+    inventoryManager
 } = dao;
